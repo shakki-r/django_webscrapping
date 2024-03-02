@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>scrapping</title>
+</head>
+<body>
+
+
+<style>
+    td,th{
+     padding:10px;
+    }
+    th{
+
+    background-color:black;
+    color:white;
+    }
+    tr:nth-child(odd) {
+    background-color:white
+}
+    tr:nth-child(even) {
+    background-color:#A5DD9B;
+}
+    .inp{
+    width:400px;
+    height:25px;
+    margin-bottom:10px;
+    background-color:grey;
+    color:white;
+    }
+    .inp::placeholder{
+    color:white;
+    }
+    .btn{
+    height:30px;
+    color:white;
+    background-color:black;
+    border:none;
+
+    }
+
+</style>
+
+<div>
+        <form method="POST">
+            {% csrf_token %}
+            <input class="inp" type="text" name="page" placeholder="Enter your links........." required>
+            <input class="btn" type="button" value="Clear">
+            <input class="btn" type="submit" value="Submit">
+        </form>
+</div>
+
+<table border="1" style=" border-collapse: collapse;">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Link</th>
+    </tr>
+    {% for i in data_values %}
+    <tr>
+         <td>{{i.id}}</td>
+        <td>{{i.string_name}}</td>
+         <td>{{i.address}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
